@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NimankIT Design System - Dark theme with violet accents */
+
+@layer base {
+  :root {
+    /* Dark theme color palette */
+    --background: 0 0% 3%;
+    --background-secondary: 0 0% 6%;
+    --background-tertiary: 0 0% 9%;
+    --foreground: 0 0% 95%;
+    --foreground-secondary: 0 0% 80%;
+
+    /* Violet accent colors */
+    --primary: 262 83% 58%;
+    --primary-dark: 262 83% 48%;
+    --primary-light: 262 83% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    /* UI elements */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+    --card-border: 0 0% 15%;
+
+    --input: 0 0% 9%;
+    --input-border: 0 0% 20%;
+    --input-focus: 262 83% 58%;
+
+    --button-secondary: 0 0% 12%;
+    --button-secondary-hover: 0 0% 18%;
+
+    --border: 0 0% 15%;
+    --border-light: 0 0% 20%;
+
+    --muted: 0 0% 40%;
+    --muted-dark: 0 0% 25%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 83% 48%));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 83% 48%), hsl(262 83% 38%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 6%), hsl(0 0% 9%));
+
+    /* Shadows and effects */
+    --shadow-primary: 0 10px 40px -10px hsl(262 83% 58% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
+    --glow-primary: 0 0 40px hsl(262 83% 58% / 0.4);
+
+    /* Animation durations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-secondary));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-dark));
+  }
+}
+
+@layer components {
+  /* Custom button variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark text-primary-foreground;
+    @apply hover:from-primary-light hover:to-primary;
+    @apply shadow-lg hover:shadow-primary;
+    @apply transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-button-secondary text-foreground border border-border-light;
+    @apply hover:bg-button-secondary-hover hover:border-primary;
+    @apply transition-all duration-300;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  /* Card styles */
+  .card-primary {
+    @apply bg-card border border-card-border;
+    @apply shadow-card;
+    background: var(--gradient-card);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(262 83% 58% / 0.3); }
+  100% { box-shadow: 0 0 40px hsl(262 83% 58% / 0.6); }
+}
